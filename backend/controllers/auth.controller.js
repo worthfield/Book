@@ -7,7 +7,7 @@ const signUp = async (req, res,next) => {
     if(username=== "" || email=== "" || password=== "" ){
         next(getErrorHandler(400,'All fields are required'))
     }
-    const hashedPassword = bcryptjs.hashSync(password,10);
+    const hashedPassword = bcryptjs.hashSync(password,16);
     const newUser =User({username,email,password:hashedPassword})
     try {
         await newUser.save();
